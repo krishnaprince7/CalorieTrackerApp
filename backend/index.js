@@ -7,16 +7,27 @@ const EmployeeModel = require("./models/Employee");
 
 const app = express();
 
+app.use(cors(
+    {
+        origin:["https://krishna-food-website.vercel.app"],
+        methods:["POST","GET"],
+        credentials:true
+    }
+))
 app.use(express.json());
-app.use(cors());
 
-mongoose.connect("mongodb://localhost:27017/mydatabase", { useNewUrlParser: true, useUnifiedTopology: true })
+
+mongoose.connect("mongodb+srv://princekrishna5707:krishna123@cluster0.hiikio8.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0", { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("Connected to MongoDB");
     })
     .catch(err => {
         console.error("Error connecting to MongoDB:", err);
     });
+
+app.get("/",(req,res)=>{
+    res.json("Hello");
+})
 
 app.post("/register", async (req, res) => {
     try {
