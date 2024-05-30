@@ -18,6 +18,7 @@ app.use(express.json());
 
 
 mongoose.connect("mongodb+srv://princekrishna5707:krishna123@cluster0.hiikio8.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0", { useNewUrlParser: true, useUnifiedTopology: true })
+
     .then(() => {
         console.log("Connected to MongoDB");
     })
