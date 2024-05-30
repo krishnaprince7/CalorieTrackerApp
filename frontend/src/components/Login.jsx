@@ -13,7 +13,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(''http://localhost:3001', { email, password });
+            const response = await axios.post(''http://localhost:3001/login', { email, password });
             console.log('Response:', response.data); // Debugging line
             localStorage.setItem('token', response.data.token);
             navigate('/home'); // Correct navigation
