@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/Login';
 
-import Register from './components/Register';
+import Register from './components/RegisterForm';
 
 
 import Firstpage from './components/Firstpage';

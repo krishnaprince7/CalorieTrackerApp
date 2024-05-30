@@ -2,57 +2,66 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Footer from './Footer';
-import Navebar from "./Navebar"
-
+import Navebar from './Navebar'; 
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
+    const [error, setError] = useState('');
+    const navigate = useNavigate(); // Correct useNavigate
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/login', { email, password });
+            const response = await axios.post('http://localhost:3001/login', { email, password });
+            console.log('Response:', response.data); // Debugging line
             localStorage.setItem('token', response.data.token);
-            navigate('/home'); 
+            navigate('/home'); // Correct navigation
         } catch (error) {
-            alert('Invalid email or password');
+            console.error('Login Error:', error.response || error); // Enhanced error logging
+            setError('Invalid email or password');
         }
     };
 
     return (
         <>
-    <Navebar/>
-
-            <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100">
-                <form onSubmit={handleSubmit} className="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
-                    <h2 className="text-3xl font-semibold text-center mb-6 text-gray-800">Login</h2>
+            <Navebar /> 
+            <div className="max-w-lg mx-auto my-10  a px-6 py-8 bg-white shadow-2xl rounded-lg border border-gray-200">
+                <h2 className="text-3xl mb-6 text-center font-semibold text-gray-700">Login</h2>
+                {error && (
+                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                        <strong className="font-bold">Error!</strong>
+                        <span className="block sm:inline"> {error}</span>
+                    </div>
+                )}
+                <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label className="block text-gray-700 mb-2">Email</label>
+                        <label className="block text-gray-700 font-bold mb-2" htmlFor="email">Email</label>
                         <input 
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 transition duration-300" 
                             type="email" 
                             value={email} 
                             onChange={(e) => setEmail(e.target.value)} 
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                            placeholder="Email" 
                             required
                         />
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 mb-2">Password</label>
+                    <div className="mb-6">
+                        <label className="block text-gray-700 font-bold mb-2" htmlFor="password">Password</label>
                         <input 
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 transition duration-300" 
                             type="password" 
                             value={password} 
                             onChange={(e) => setPassword(e.target.value)} 
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                            placeholder="Password" 
                             required
                         />
                     </div>
-                    <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300">Login</button>
-                    <div className="mt-4 text-center">
-                        <Link to="/register" className="text-blue-500 hover:underline">Don't have an account? Register</Link>
-                    </div>
+                    <button className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300 font-semibold" type="submit">Login</button>
                 </form>
+                <div className="mt-4 text-center">
+                    <Link to="/register" className="text-blue-500 hover:underline">Don't have an account? Register</Link>
+                </div>
             </div>
             <Footer />
         </>
