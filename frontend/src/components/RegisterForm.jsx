@@ -32,7 +32,7 @@ const RegisterForm = () => {
         }
 
         try {
-            const response = await axios.post('https://calorie-tracker-app-orcin.vercel.app//register', formData);
+            const response = await axios.post('https://calorie-tracker-app-orcin.vercel.app/register', formData);
             console.log('Employee registered:', response.data);
             setSuccessMessage('Account created successfully go to Login.');
             setErrorMessage('');
