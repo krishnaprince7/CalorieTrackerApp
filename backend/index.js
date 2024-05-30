@@ -9,7 +9,7 @@ const app = express();
 
 app.use(cors(
     {
-        origin:["https://krishna-food-website.vercel.app"],
+        origin:["https://krishna-calorie-tracker-app.vercel.app"],
         methods:["POST","GET"],
         credentials:true
     }
