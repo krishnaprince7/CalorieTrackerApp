@@ -53,11 +53,11 @@ function CalorieTrackerApp() {
   };
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen flex justify-center items-center">
       <img src="/images/healthy.png" alt="Food" className="absolute inset-0 object-cover w-full h-full opacity-80" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-500 opacity-70"></div>
-      <div className="container mx-auto px-4 py-8 bg-white rounded-lg shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-70 relative z-10">
-        <h1 className="text-3xl font-bold mb-8 text-center">Calorie Tracker</h1>
+      <div className="container mx-auto px-4 py-8 bg-white rounded-lg shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-70 relative z-10 mt-20">
+        <h1 className="text-3xl font-bold my-10 text-center">Calorie Tracker</h1>
         <div className="flex flex-col sm:flex-row items-center mb-8">
           <input
             type="text"
