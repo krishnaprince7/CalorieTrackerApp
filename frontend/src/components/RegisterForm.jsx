@@ -25,7 +25,7 @@ const RegisterForm = () => {
 
         setTimeout(async () => { 
             try {
-                const response = await axios.post('http://localhost:3001/register', formData);
+                const response = await axios.post('https://calorie-tracker-app-orcin.vercel.app/register', formData);
                 console.log('Response:', response.data); 
                 setLoading(false); 
                 setSuccessMessage('Account created successfully. Redirecting to login...');
