@@ -7,7 +7,7 @@ function CalorieTrackerApp() {
   const [foodList, setFoodList] = useState([]);
   const navigate = useNavigate();
 
-  // Load data from localStorage on component mount
+  
   useEffect(() => {
     const storedFoodList = localStorage.getItem('foodList');
     if (storedFoodList) {
@@ -15,7 +15,7 @@ function CalorieTrackerApp() {
     }
   }, []);
 
-  // Save data to localStorage whenever foodList changes
+ 
   useEffect(() => {
     localStorage.setItem('foodList', JSON.stringify(foodList));
   }, [foodList]);
